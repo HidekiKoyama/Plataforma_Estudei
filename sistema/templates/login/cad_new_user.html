@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'static_global/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'static_login/styles_cad_user.css' %}">
+    <title>Register</title>
+</head>
+<body>
+<div class="container">
+    <div class="signup-box">
+        <h2>Tela de Cadastro</h2>
+            <form action="{% url 'cad_user' %}" method="POST">
+                {% csrf_token %} 
+                <input type="text" placeholder="User" name="user" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <input type="email" placeholder="E-mail" name="email">
+                <button type="submit">Login</button> <a href="/">Sing in</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
