@@ -28,7 +28,9 @@ def delete_categories_curse(request, id):
         return_data = categorie_curses.objects.all()
         return render (request, 'system_admin/curses_categories_add.html', {'return_data': return_data})
     else: 
-        return render(request, 'login/index.html')
+        
+        return_data = categorie_curses.objects.all()
+        return render (request, 'system_admin/curses_categories_add.html', {'return_data': return_data})
     
 def update_cad_categories_curse(request, id):
         if request.method == 'POST':

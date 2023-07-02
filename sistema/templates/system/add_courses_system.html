@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Cursos</title>
+</head>
+{% include 'arq_global/menu_global_system.html' %}
+<style>
+    body {
+      background-color: #f2f2f2;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555555;
+    }
+
+    .input-form {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .input-form:focus {
+      outline: none;
+      border-color: #555555;
+    }
+
+    select.input-form {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url('arrow-down.png') no-repeat right center;
+      background-size: 20px 20px;
+      padding-right: 30px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #555555;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333333;
+    }
+    #image-preview {
+      width: 200px;
+      height: 200px;
+      background-color: #f2f2f2;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+<body> 
+    <h1>Cadastrar Cursos</h1>
+    <div class="cotainer">
+        <form action="{% url 'add_courses' %}" method="POST">
+            {% csrf_token %}
+            <label for="name-course">Nome do Curso:</label>
+            <input type="text" name="name-course" id="name-course" class="input-form" placeholder="Nome do curso">
+        
+            <label for="description">Descrição do Curso:</label>
+            <textarea placeholder="Descrição" name="desc_categorie" class="input-form" id="description" maxlength="150"></textarea> 
+        
+            <label for="categorie_course">Categoria do Curso:</label>
+            <select name="categorie_course" id="categorie-course" class="input-form">
+                {% for return_data in return_data %}
+              <option value={{ return_data.id }}>{{ return_data.name }}</option>
+              {% endfor %}
+            </select>
+        
+            <label for="banner-course">Banner do Curso:</label>
+            <input type="file" name="banner-course" id="banner-course" accept="image/*" onchange="previewImage(event)">
+            <div id="image-preview"></div>
+        
+            <button type="submit">Salvar</button>   
+    </div>
+    <script>
+        function previewImage(event) {
+          var reader = new FileReader();
+          var imagePreview = document.getElementById("image-preview");
+    
+          reader.onload = function() {
+            imagePreview.style.backgroundImage = "url(" + reader.result + ")";
+          };
+    
+          reader.readAsDataURL(event.target.files[0]);
+        }
+      </script>
+</body> 
+</html>

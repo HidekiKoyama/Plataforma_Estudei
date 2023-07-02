@@ -1,54 +1,90 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'static_admin/styles_area_cad_categories.css' %}">
-    <title>Formulário de Cadastro de Categorias</title>
-</head>
-<body>
-{% include 'arq_global/menu_global_system.html' %}
-<body>
-    <div class="container">
-        <div class="form-box">
-            <h2>Formulário de Cadastro de Categorias</h2>
-            <form action="{% url 'cad_categories_curse' %}" method="POST">
-                {% csrf_token %}
-                <input type="text" placeholder="Nome da Categoria" name="name_categorie" required>
-                <textarea placeholder="Descrição" name="desc_categorie" maxlength="150"></textarea>
-                <button type="submit" name="buttom" value="buttom_save_categorie">Save</button>
-            </form>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'static_admin/styles_area_cad_categories.css' %}">
+        <title>Formulário de Cadastro de Categorias</title>
+    </head>
+    {% include 'arq_global/menu_global_system.html' %}
+    <style>
+        /* buttons*/
+.button-form-categorie {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 90px;
+    background-color: transparent;
+    border: 2px solid #555555;
+    color: #555555;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+
+  .button-form-categorie:hover {
+    background-color: #555555;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+
+  .message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 4px;
+      display: none;
+    }
+    </style>
+    <body>
+        <div class="message" id="message">
+            Mensagem de Exemplo
         </div>
-    </div>
-    <div class="table_results">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome da Categoria</th>
-                    <th>Descrição</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for return_data in return_data %}
-                <tr>
-                    <td>{{ return_data.name}}</td>
-                    <td> {{ return_data.description }}</td>
-                    <td>
-                        <label for="">
-                            <a href="{% url 'update_cad_categories_curse' return_data.id %}">Editar</a>
-                        </label>
-                        <form action="{% url 'delete_categories_curse' return_data.id %}" id="delete-cad" method="POST">
-                        {% csrf_token %}
-                        </form>
-                        <button type="submit" onclick="showConfirmation()">Deletar</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-<script src="{% static 'static_admin/script_admin.js' %}"></script>
-</body>
-</html>
+        <div class="container">
+            <div class="form-box">
+                <h2>Formulário de Cadastro de Categorias</h2>
+                <form action="{% url 'cad_categories_curse' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Nome da Categoria" name="name_categorie" required>
+                    <textarea placeholder="Descrição" name="desc_categorie" maxlength="150"></textarea>
+                    <button type="submit" name="buttom" value="buttom_save_categorie">Save</button>
+                </form>
+            </div>
+        </div>
+        <div class="table_results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome da Categoria</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for return_data in return_data %}
+                    <tr>
+                        <td>{{ return_data.name}}</td>
+                        <td> {{ return_data.description }}</td>
+                        <td>
+                            <form action="{% url 'update_cad_categories_curse' return_data.id %}" method="GET">
+                                {% csrf_token %}
+                                <button type="submit" class="button-form-categorie">Editar</button>
+                            </form>
+                            <form action="{% url 'delete_categories_curse' return_data.id %}" id="delete-cad">
+                                {% csrf_token %}
+                                <button type="submit" onclick="showConfirmation()" class="button-form-categorie">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="{% static 'static_admin/script_admin.js' %}"></script>
+    </body>
+    </html>

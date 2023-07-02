@@ -51,8 +51,9 @@ body {
 .form-box button:hover {
     background-color: #45a049;
 }
+
 /*Tables*/
-        
+
 table {
     width: 100%;
     border-collapse: collapse;
