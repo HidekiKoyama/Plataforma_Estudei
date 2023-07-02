@@ -17,3 +17,7 @@ class courses(models.Model):
     image = models.ImageField(upload_to='./files')
     def __str__(self):
         return self.name
+    
+class friens(models.Model):
+    friend_1 = models.IntegerField()
+    friend_2 = models.IntegerField()
