@@ -19,9 +19,12 @@
     <div id="sidebar">
         <ul>  
           <li><a href="{% url 'login_is_valid' %}">Home</a></li>
-          <li><a href="#">Adicionar amigos</a></li>
+          <li><a href="{% url 'add_friend' %}">Adicionar amigos</a></li>
           <li><a href="#">Rank</a></li>
+          {% if request.user.is_superuser %}
           <li><a href="{% url 'cad_categories_curse' %}">Categoria curso</a></li>
+          {% else %}
+          {% endif %}
           <li><a href="/">Logout</a></li>
       </ul>
   </div>

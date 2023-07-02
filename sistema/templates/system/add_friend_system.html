@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'static_system/static_add_friend.css' %}">
+    <title>Add friend</title>
+</head>
+{% include 'arq_global/menu_global_system.html' %}
+<body>
+    <div class="search-container">
+        <input type="text" class="search-input" id="search-input" placeholder="Pesquisar">
+        <i class="search-icon">🔍</i>
+    </div>
+      <table id="user-table">
+        <thead>
+            <tr>
+                <th>user</th>
+                <th>Adicionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list_users in list_users %}
+            <tr>
+                <td>{{ list_users.username}}</td>
+                <td>
+                    <form action="#" id="add-friend" method="POST">
+                    {% csrf_token %}
+                    </form>
+                    <button type="submit" onclick="" value="{{ request.user.id }}">Adicionar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<script src="{% static 'static_system/static_script.js' %}"></script>
+</body>
+</html>
