@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .models import categorie_curses
+from django.contrib.auth.models import User
 
 def home_admin(request):
     return render (request, 'sytem_admin/admin_main_control.html')
-
 
 def cad_categories_curse(request):  
     buttom_click = request.POST.get('buttom')
@@ -42,3 +42,18 @@ def update_cad_categories_curse(request, id):
         else:
             update_cad_categories = categorie_curses.objects.filter(id=id)
             return render (request, 'system_admin/update_curses_categories_add.html', {'update_cad_categories': update_cad_categories})
+        
+def control_user(request):
+    if request.method == 'GET':
+        list_users = User.objects.all()
+        return render (request, 'system_admin/admin_crud_users.html', {'list_users': list_users})
+    else:
+        list_users = User.objects.all()
+        return render (request, 'system_admin/admin_crud_users.html', {'list_users': list_users})
+
+
+'''    elif request.method == 'POST' and request.POST.get('button') == 'delete':
+        delete_who = User.objects.filter(id=id)
+        delete_who.delete()
+        list_users = User.objects.all()
+        return render (request, 'system_admin/admin_crud_users.html', {'list_users': list_users})'''

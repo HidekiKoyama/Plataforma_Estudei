@@ -9,7 +9,7 @@
         <ul>
             <li><a href="#">Dashboard</a></li>
             <li><a href="{% url 'list_courses' %}">Cursos</a></li>
-            <li><a href="#">Perfil</a></li>
+            <li><a href="{% url 'profile_user' %}">Perfil</a></li>
         </ul>
     </nav>
     <input type="checkbox" id="toggle-btn">
@@ -22,6 +22,7 @@
           <li><a href="{% url 'add_friend' %}">Adicionar amigos</a></li>
           {% if request.user.is_superuser %}
           <li><a href="{% url 'cad_categories_curse' %}">Categoria curso</a></li>
+          <li><a href="{% url 'control_user' %}">Controle de Usuário</a></li>
           {% else %}
           {% endif %}
 

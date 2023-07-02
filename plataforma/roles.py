@@ -1,7 +1,7 @@
 from rolepermissions.roles import AbstractUserRole
 
-class Professor(AbstractUserRole):
-     available_permissions = {'cria_usuarios': True, 'ver_saldo': True}
+class teacher(AbstractUserRole):
+     available_permissions = {'post_curse': True}
 
-class Aluno(AbstractUserRole):
-     available_permissions = {'cria_usuarios': False, 'ver_saldo': True}
+class student(AbstractUserRole):
+     available_permissions = {'feedbak_curse': True}

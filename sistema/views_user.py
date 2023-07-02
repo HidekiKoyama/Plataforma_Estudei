@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from .models import courses, categorie_curses
+from .models import courses
 
 def add_friend(request):
     if request.method == 'POST':
@@ -12,3 +12,7 @@ def add_friend(request):
 def list_courses(request):
     list_curses = courses.objects.all()
     return render(request, 'system/rank_dos_cursos.html', {'list_curses': list_curses})
+
+def profile_user(request):
+    load_user = User.objects.filter(username=request.user)
+    return render(request, 'system/profile_user_system.html', {'oload_user': load_user})

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'static_admin/styles_area_cad_categories.css' %}">
+    <title>Controle de Usuário</title>
+</head>
+{% include 'arq_global/menu_global_system.html' %}
+<body>
+    <h1>Control Users</h1>
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>user</th>
+                <th>Acão</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list_users in list_users %}
+            <tr>
+                <td>{{ list_users.username}}</td>
+                <td>
+                    <form action="#" id="add-friend" method="POST">
+                    {% csrf_token %}
+                    </form>
+                    <button type="submit" value="editar">Editar</button>
+                    <button type="submit" value="delete">Deletar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<script src="{% static 'static_system/static_script.js' %}"></script>
+</body>
+</html>

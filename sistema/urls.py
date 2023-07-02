@@ -15,4 +15,6 @@ urlpatterns = [
     path('add_friend/', add_friend, name='add_friend'),
     path('add_courses/', add_courses, name='add_courses'),
     path('list_courses/', list_courses, name='list_courses'),
+    path('profile_user/', profile_user, name='profile_user'),
+    path('control_user/', control_user, name='control_user'),
 ]
