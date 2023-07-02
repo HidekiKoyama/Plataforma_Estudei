@@ -72,3 +72,6 @@ th {
 td:last-child {
     text-align: right;
 }
+.table_results{
+    margin: 25px;
+}

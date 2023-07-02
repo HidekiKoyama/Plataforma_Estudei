@@ -8,38 +8,47 @@
     <title>Formulário de Cadastro de Categorias</title>
 </head>
 <body>
-</head>
+{% include 'arq_global/menu_global_system.html' %}
 <body>
     <div class="container">
         <div class="form-box">
             <h2>Formulário de Cadastro de Categorias</h2>
-            <form>
+            <form action="{% url 'cad_categories_curse' %}" method="POST">
+                {% csrf_token %}
                 <input type="text" placeholder="Nome da Categoria" name="name_categorie" required>
-                <textarea placeholder="Descrição" name="desc_categorie"></textarea>
-                <button type="submit">Save</button>
+                <textarea placeholder="Descrição" name="desc_categorie" maxlength="150"></textarea>
+                <button type="submit" name="buttom" value="buttom_save_categorie">Save</button>
             </form>
         </div>
-        <div class="table_results">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome da Categoria</th>
-                        <th>Descrição</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Categoria 1</td>
-                        <td>Descrição da Categoria 1</td>
-                        <td>
-                            <button>Editar</button>
-                            <button>Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
+    <div class="table_results">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Categoria</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for return_data in return_data %}
+                <tr>
+                    <td>{{ return_data.name}}</td>
+                    <td> {{ return_data.description }}</td>
+                    <td>
+                        <label for="">
+                            <a href="{% url 'update_cad_categories_curse' return_data.id %}">Editar</a>
+                        </label>
+                        <form action="{% url 'delete_categories_curse' return_data.id %}" id="delete-cad" method="POST">
+                        {% csrf_token %}
+                        </form>
+                        <button type="submit" onclick="showConfirmation()">Deletar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<script src="{% static 'static_admin/script_admin.js' %}"></script>
 </body>
 </html>

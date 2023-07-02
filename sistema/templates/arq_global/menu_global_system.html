@@ -1,0 +1,29 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/static_main/styles_system_main.css' %}">
+</head>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Cursos</a></li>
+            <li><a href="#">Perfil</a></li>
+        </ul>
+    </nav>
+    <input type="checkbox" id="toggle-btn">
+    <div id="menu">
+      <label for="toggle-btn" id="toggle-label" onclick="show_sub_menus()">Menu</label>
+    </div>
+    <div id="sidebar">
+        <ul>  
+          <li><a href="{% url 'login_is_valid' %}">Home</a></li>
+          <li><a href="#">Adicionar amigos</a></li>
+          <li><a href="#">Rank</a></li>
+          <li><a href="{% url 'cad_categories_curse' %}">Categoria curso</a></li>
+          <li><a href="/">Logout</a></li>
+      </ul>
+  </div>
+</header>
+<script src="{% static 'static_main/script_system_main.js' %}"></script>

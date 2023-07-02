@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'static_admin/styles_area_cad_categories.css' %}">
+ <div class="container">
+        <div class="form-box">
+            <h2>Formulário de Cadastro de Categorias</h2>
+            {% for update_cad_categories in update_cad_categories %}
+            <form action="{% url 'update_cad_categories_curse' update_cad_categories.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Nome da Categoria" name="name_categorie" value="{{ update_cad_categories.name }}" required>
+                <textarea placeholder="Descrição" name="desc_categorie" maxlength="150">{{ update_cad_categories.description }}</textarea>
+                <button type="submit" name="buttom" value="buttom_save_categorie">Save</button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
