@@ -1,6 +1,7 @@
 from django.urls import path
 from .views_global import *
 from .views_admin import *
+from .views_user import *
 
 urlpatterns = [
     path('', index, name='index'),
@@ -9,5 +10,6 @@ urlpatterns = [
     path('cad_categories_curse/', cad_categories_curse, name='cad_categories_curse'),
     path('update_cad_categories_curse/<int:id>/', update_cad_categories_curse, name='update_cad_categories_curse'),
     path('delete_categories_curse/<int:id>/', delete_categories_curse, name="delete_categories_curse"),
-    path('home_admin', home_admin, name='home_admin')
+    path('home_admin', home_admin, name='home_admin'),
+    path('add_friend', add_friend, name='add_friend'),
 ]

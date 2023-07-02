@@ -28,7 +28,6 @@ def delete_categories_curse(request, id):
         return_data = categorie_curses.objects.all()
         return render (request, 'system_admin/curses_categories_add.html', {'return_data': return_data})
     else: 
-        print("deu ruim meu nobre")
         return render(request, 'login/index.html')
     
 def update_cad_categories_curse(request, id):
