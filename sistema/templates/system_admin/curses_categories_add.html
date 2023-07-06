@@ -68,14 +68,14 @@
                 <tbody>
                     {% for return_data in return_data %}
                     <tr>
-                        <td>{{ return_data.name}}</td>
-                        <td> {{ return_data.description }}</td>
+                        <td>{{ return_data.0 }}</td>
+                        <td> {{ return_data.1 }}</td>
                         <td>
-                            <form action="{% url 'update_cad_categories_curse' return_data.id %}" method="GET">
+                            <form action="" method="GET">
                                 {% csrf_token %}
                                 <button type="submit" class="button-form-categorie">Editar</button>
                             </form>
-                            <form action="{% url 'delete_categories_curse' return_data.id %}" id="delete-cad">
+                            <form action="" id="delete-cad">
                                 {% csrf_token %}
                                 <button type="submit" onclick="showConfirmation()" class="button-form-categorie">Deletar</button>
                             </form>
