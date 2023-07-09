@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class StringConection():
     def __init__(self):
         host = 'localhost'
@@ -11,7 +12,8 @@ class StringConection():
 
     def getConection(self):
         return self.conn_string
-    
+
+
 class ConectionDB():
 
     def connConsulta(self, consulta):
