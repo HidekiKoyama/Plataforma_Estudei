@@ -16,4 +16,5 @@ urlpatterns = [
     path('list_courses/', FunctionsUser.list_courses, name='list_courses'),
     path('profile_user/', FunctionsUser.profile_user, name='profile_user'),
     path('control_user/', Admin_space.control_user, name='control_user'),
+    path('block_user/<int:id>/', Admin_space.block_user, name='block_user'),
 ]

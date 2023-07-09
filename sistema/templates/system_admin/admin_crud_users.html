@@ -20,13 +20,24 @@
         <tbody>
             {% for list_users in list_users %}
             <tr>
-                <td>{{ list_users.4}}</td>
+                <td>{{ list_users.4}} </td>
                 <td>
-                    <form action="#" id="add-friend" method="POST">
-                    {% csrf_token %}
+                    <form action="{% url 'block_user' list_users.0 %}" id="add-friend" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" value="edit" name="edit-button">Editar</button>
                     </form>
-                    <button type="submit" value="editar">Editar</button>
-                    <button type="submit" value="delete">Deletar</button>
+                    {% if list_users.9 == True %}
+                        <form action="{% url 'block_user' list_users.0 %}" id="add-friend" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" value="block" name="block-button">Bloquear</button>
+                        </form>
+                    {% elif list_users.9 == False %}
+                    <form action="{% url 'block_user' list_users.0 %}" id="add-friend" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" value="unblock" name="block-button">Desbloquear</button>
+                    </form>
+
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

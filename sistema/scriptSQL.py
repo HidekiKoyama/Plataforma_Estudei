@@ -21,11 +21,7 @@ class RequestSQL():
         return script
 
     def requestUser(self):
-        script = "SELECT * FROM auth_user"
-        return script
-
-    def listUsersUser(self):
-        script = "SELECT name FROM AUTH_USER "
+        script = "SELECT * FROM auth_user WHERE ID <> 1 ORDER BY ID"
         return script
 
     def rankCourses(self):
@@ -40,4 +36,12 @@ class RequestSQL():
     
     def requestCategorieCourses(self):
         script = "SELECT * FROM SISTEMA_CATEGORIE_COURSE WHERE DELETE <> False"
+        return script
+    
+    def upadateBlockUser(self, id):
+        script = f"UPDATE AUTH_USER SET is_active = False WHERE ID = {id}"
+        return script
+    
+    def upadateUnblockUser(self, id):
+        script = f"UPDATE AUTH_USER SET is_active = True WHERE ID = {id}"
         return script

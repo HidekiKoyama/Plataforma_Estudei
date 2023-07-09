@@ -26,12 +26,11 @@ class Admin_space():
     def cad_categories_curse(request):
         conn = Conection()
 
-        buttom_click = request.POST.get('buttom')
         if request.method == 'GET':
             return_data = conn.getConect().connConsulta(conn.getQuery().requestCourses())
             return render(request, 'system_admin/curses_categories_add.html', {'return_data': return_data})
 
-        elif request.method == 'POST' and buttom_click == 'buttom_save_categorie':
+        elif request.method == 'POST' and request.POST.get('buttom') == 'buttom_save_categorie':
             new_name = request.POST.get('name_categorie')
             new_description = request.POST.get('desc_categorie')
             conn.getConect().connAlter(conn.getQuery().insertCourses(new_name, new_description))
@@ -76,3 +75,21 @@ class Admin_space():
 
         list_users = conn.getConect().connConsulta(conn.getQuery().requestUser())
         return render(request, 'system_admin/admin_crud_users.html', {'list_users': list_users})
+
+    @login_required
+    def block_user(request, id):
+        conn = Conection()
+        
+        def returnHand():
+            list_users = conn.getConect().connConsulta(conn.getQuery().requestUser())
+            return render(request, 'system_admin/admin_crud_users.html', {'list_users': list_users})
+        
+        if "block" == request.POST.get('block-button') and request.method == 'POST':
+            conn.getConect().connAlter(conn.getQuery().upadateBlockUser(id))
+            return returnHand()
+        if "unblock" == request.POST.get('block-button') and request.method == 'POST':
+            conn.getConect().connAlter(conn.getQuery().upadateUnblockUser(id))
+            return returnHand()
+        
+        else:
+            return returnHand()
