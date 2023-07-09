@@ -1,15 +1,15 @@
 class RequestSQL():
 
-    def updateCourses(self, name, description, ide):
-        script = f"UPDATE sistema_categorie_curses SET name = '{name}', description = '{description}' WHERE id = {ide};"
+    def updateCourses(self, name, description, id):
+        script = f"UPDATE sistema_categorie_curses SET name = '{name}', description = '{description}' WHERE id = {id};"
         return script
 
     def requestCourses(self):
-        script = "SELECT name, description, id FROM sistema_categorie_curses"
+        script = "SELECT name, description, id FROM sistema_categorie_course"
         return script
 
-    def dellCourses(self, pk):
-        script = f"DELETE FROM sistema_categorie_curses WHERE ID = {pk}"
+    def dellCourses(self, id):
+        script = f"DELETE FROM sistema_categorie_curses WHERE ID = {id}"
         return script
 
     def filterCourses(self, id):

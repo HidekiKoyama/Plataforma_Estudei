@@ -2,7 +2,7 @@ from django.urls import path
 from .views_global import RequestGlobal
 from .views_admin import Admin_space
 from .views_user import FunctionsUser
-from .views_teacher import *
+from .views_teacher import Teacher
 
 urlpatterns = [
     path('cad_user/', RequestGlobal.cad_user, name='cad_user'),
@@ -12,7 +12,7 @@ urlpatterns = [
     path('delete_categories_curse/<int:id>/', Admin_space.delete_categories_curse, name="delete_categories_curse"),
     path('home_admin/', Admin_space.home_admin, name='home_admin'),
     path('add_friend/', FunctionsUser.add_friend, name='add_friend'),
-    path('add_courses/', add_courses, name='add_courses'),
+    path('add_courses/', Teacher.add_courses, name='add_courses'),
     path('list_courses/', FunctionsUser.list_courses, name='list_courses'),
     path('profile_user/', FunctionsUser.profile_user, name='profile_user'),
     path('control_user/', Admin_space.control_user, name='control_user'),
