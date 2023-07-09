@@ -3,12 +3,12 @@
  <div class="container">
         <div class="form-box">
             <h2>Formulário de Cadastro de Categorias</h2>
-            {% for update_cad_categories in update_cad_categories %}
-            <form action="{% url 'update_cad_categories_curse' update_cad_categories.id %}" method="POST">
+            {% for return_data in return_data %}
+            <form action="{% url 'update_cad_categories_curse' return_data.2 %}" method="POST">
                 {% csrf_token %}
-                <input type="text" placeholder="Nome da Categoria" name="name_categorie" value="{{ update_cad_categories.name }}" required>
-                <textarea placeholder="Descrição" name="desc_categorie" maxlength="150">{{ update_cad_categories.description }}</textarea>
-                <button type="submit" name="buttom" value="buttom_save_categorie">Save</button>
+                <input type="text" placeholder="Nome da Categoria" name="name_categorie" value="{{ return_data.0 }}" required>
+                <textarea placeholder="Descrição" name="desc_categorie" maxlength="150">{{ return_data.1 }}</textarea>
+                <button type="submit" name="buttom_save_categorie" value="{{ return_data.2 }}">Save</button>
             </form>
             {% endfor %}
         </div>
