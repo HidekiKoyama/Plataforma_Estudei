@@ -23,3 +23,12 @@ class RequestSQL():
     def requestUser(self):
         script = "SELECT * FROM auth_user"
         return script
+
+    def listUsersUser(self):
+        script = "SELECT name   "
+        return script
+    
+    def rankCourses(self):
+        script = ("SELECT main.name, main.description, SCC.name, main.id FROM sistema_courses main " +
+	                "JOIN(SELECT name, id FROM sistema_categorie_curses) SCC ON SCC.id = main.categorie_course")
+        return script

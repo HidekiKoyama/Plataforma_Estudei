@@ -106,9 +106,9 @@
 <tbody>
     {% for list_curses in list_curses %}
     <tr>
-        <td>{{ list_curses.name }}</td>
-        <td>{{ list_curses.description }}</td>
-        <td>{{ list_curses.categorie_couse }}</td>
+        <td>{{ list_curses.0 }}</td>
+        <td>{{ list_curses.1 }}</td>
+        <td>{{ list_curses.2 }}</td>
         {% if request.user.is_superuser %}
         <td><a href="#">Editar</a></td>
         <td><a href="#">Deletar</a></td>
@@ -119,10 +119,10 @@
   </table>
   <script>
     
-var sortableTable = document.getElementById("user-table");
-var tableHeaders = sortableTable.querySelectorAll("th");
-var sortedColumnIndex = -1;
-var isAscending = true;
+const sortableTable = document.getElementById("user-table");
+const tableHeaders = sortableTable.querySelectorAll("th");
+const sortedColumnIndex = -1;
+const isAscending = true;
 
 function sortTable(columnIndex) {
   isAscending = sortedColumnIndex === columnIndex ? !isAscending : true;

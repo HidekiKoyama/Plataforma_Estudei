@@ -12,7 +12,7 @@ class StringConection():
     def getConection(self):
         return self.conn_string
     
-class ConectionDB:
+class ConectionDB():
 
     def connConsulta(self, consulta):
         objString = StringConection()
