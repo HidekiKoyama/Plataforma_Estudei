@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class categorie_curses(models.Model):
+class categorie_course(models.Model):
     name = models.CharField(max_length=25)
     description = models.TextField(max_length=150)
     delete = models.BooleanField(default=True, blank=False)
@@ -11,8 +11,7 @@ class categorie_curses(models.Model):
 
 
 class courses(models.Model):
-    user_log = models.ForeignKey(
-        "auth.user", blank=True, null=True, on_delete=models.SET_NULL, default="")
+    user_log = models.ForeignKey("auth.user", blank=True, null=True, on_delete=models.SET_NULL, default="")
     name = models.CharField(max_length=50, null=False)
     description = models.CharField(max_length=155)
     categorie_course = models.IntegerField(null=False, blank=True, default="")

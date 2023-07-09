@@ -25,10 +25,19 @@ class RequestSQL():
         return script
 
     def listUsersUser(self):
-        script = "SELECT name   "
+        script = "SELECT name FROM AUTH_USER "
         return script
 
     def rankCourses(self):
         script = ("SELECT main.name, main.description, SCC.name, main.id FROM sistema_courses main " +
-                  "JOIN(SELECT name, id FROM sistema_categorie_curses) SCC ON SCC.id = main.categorie_course")
+                    "JOIN(SELECT name, id FROM sistema_categorie_course) SCC ON SCC.id = main.categorie_course")
+        return script
+
+    def insertCourses(self, name, description, categorie, user):
+        script = ("INSERT INTO SISTEMA_COURSES (NAME, DESCRIPTION, CATEGORIE_COURSE, USER_LOG_ID, DELETE) " +
+                    f"VALUES ('{name}', '{description}', {categorie}, (SELECT ID FROM AUTH_USER WHERE USERNAME = '{user}'), false)")
+        return script
+    
+    def requestCategorieCourses(self):
+        script = "SELECT * FROM SISTEMA_CATEGORIE_COURSE WHERE DELETE <> False"
         return script

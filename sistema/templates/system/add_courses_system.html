@@ -92,7 +92,7 @@
             <label for="categorie_course">Categoria do Curso:</label>
             <select name="categorie_course" id="categorie-course" class="input-form">
                 {% for return_data in return_data %}
-              <option value={{ return_data.id }}>{{ return_data.name }}</option>
+              <option value={{ return_data.0 }}>{{ return_data.1 }}</option>
               {% endfor %}
             </select>
         
