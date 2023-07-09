@@ -22,10 +22,6 @@
             <tr>
                 <td>{{ list_users.4}} </td>
                 <td>
-                    <form action="{% url 'block_user' list_users.0 %}" id="add-friend" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" value="edit" name="edit-button">Editar</button>
-                    </form>
                     {% if list_users.9 == True %}
                         <form action="{% url 'block_user' list_users.0 %}" id="add-friend" method="POST">
                             {% csrf_token %}
