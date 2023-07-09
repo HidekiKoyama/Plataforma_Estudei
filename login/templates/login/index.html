@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'static_global/styles.css' %}">
     <link rel="stylesheet" href="{% static 'static_login/styles_login.css' %}">
     <title>Welcome</title>
 </head>
@@ -14,10 +13,17 @@
             <h2>Welcome back</h2>
             <form action="{% url 'login_is_valid' %}" method="post">
                 {% csrf_token %} 
-                <input type="text" placeholder="Usuário" name="user" required>
-                <input type="password" placeholder="Senha" name="password" required>
-                <button type="submit">Login</button>
+                <div class="input-container">
+                    <input type="text" id="username" name="user" required>
+                    <label for="username">Usuário</label>
+                  </div>
+                  
+                  <div class="input-container">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Senha</label>
+                  </div>
                 <a href="{% url 'cad_user' %}">Sing up</a>
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>

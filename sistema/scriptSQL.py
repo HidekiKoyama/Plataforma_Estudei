@@ -13,7 +13,7 @@ class RequestSQL():
         return script
 
     def filterCourses(self, id):
-        script = f"SELECT name, description, id FROM sistema_categorie_curses WHERE ID = {id}"
+        script = f"SELECT name, description, id FROM sistema_categorie_course WHERE ID = {id}"
         return script
 
     def insertCourses(self, name, description):
