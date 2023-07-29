@@ -21,7 +21,7 @@ class RequestSQL():
         return script
 
     def requestUser(self):
-        script = "SELECT * FROM auth_user WHERE ID <> 1 ORDER BY ID"
+        script = "SELECT * FROM auth_user WHERE ID <> 1 AND is_superuser = 'False' ORDER BY ID"
         return script
 
     def rankCourses(self):
@@ -44,4 +44,20 @@ class RequestSQL():
     
     def upadateUnblockUser(self, id):
         script = f"UPDATE AUTH_USER SET is_active = True WHERE ID = {id}"
+        return script
+    
+    def addFriend(self, id1, id2):
+        script = f"INSERT INTO SYSTEM_FRIENDS (F1, F2) VALUES ({id1}, {id2})"
+        return script
+    
+    def isFriend(self, id):
+        script = ("SELECT "+
+	   "SYS.ID, " +
+        "SYS.USERNAME, " +
+        "CASE " +
+            f"WHEN (SYS.ID IN (SELECT F2 FROM SYSTEM_FRIENDS WHERE (F1 = {id}) OR SYS.ID IN (SELECT F1 FROM SYSTEM_FRIENDS WHERE (F2 = {id})))) THEN True " +
+            "ELSE False " +
+            "END SITUAMIGO "+
+            "FROM auth_user AS SYS "+
+                f"WHERE SYS.is_superuser = 'False' AND SYS.ID <> {id};")
         return script

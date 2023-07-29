@@ -16,19 +16,23 @@
       <table id="user-table">
         <thead>
             <tr>
-                <th>user</th>
+                <th>Username</th>
                 <th>Adicionar</th>
             </tr>
         </thead>
         <tbody>
             {% for list_users in list_users %}
             <tr>
-                <td>{{ list_users.username}}</td>
+                <td>{{ list_users.1}}</td>
                 <td>
-                    <form action="#" id="add-friend" method="POST">
+                    {% if list_users.2 == False %}
+                    <form action=" {% url 'add_friend' list_users.0 %}" id="add-friend" method="POST">
                     {% csrf_token %}
+                    <button type="submit" name="add_friend">Adicionar</button>
                     </form>
-                    <button type="submit" onclick="" value="{{ request.user.id }}">Adicionar</button>
+                    {% else %}
+                    Já é amigo
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

@@ -20,7 +20,20 @@ class courses(models.Model):
     def __str__(self):
         return self.name
 
+'''
+CREATE SEQUENCE SEQ_SYSTEM_FRIENDS;
 
-class friends(models.Model):
-    friend_1 = models.IntegerField()
-    friend_2 = models.IntegerField()
+CREATE TABLE SYSTEM_FRIENDS (
+	ID INTEGER DEFAULT (NEXTVAL('SEQ_SYSTEM_FRIENDS')),
+	F1 INTEGER,
+	F2 INTEGER,
+	
+	CONSTRAINT PK_SYS_FRIEND PRIMARY KEY (ID),
+	
+	CONSTRAINT FK_SYS_FRIEND1 FOREIGN KEY (F1)
+		REFERENCES AUTH_USER (ID),
+
+	CONSTRAINT FK_SYS_FRIEND2 FOREIGN KEY (F2)
+		REFERENCES AUTH_USER (ID)
+)
+'''

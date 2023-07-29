@@ -19,7 +19,7 @@
     <div id="sidebar">
         <ul>  
           <li><a href="{% url 'login_is_valid' %}">Home</a></li>
-          <li><a href="{% url 'add_friend' %}">Adicionar amigos</a></li>
+          <li><a href="{% url 'add_friend' 0%}">Adicionar amigos</a></li>
           {% if request.user.is_superuser %}
           <li><a href="{% url 'cad_categories_curse' %}">Categoria curso</a></li>
           <li><a href="{% url 'control_user' %}">Controle de Usuário</a></li>
