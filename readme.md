@@ -1,3 +1,4 @@
+Projeto em desenvolvimento 🚧
 Nome do Projeto: Plataforma de Aprendizado Interativo
 
 Descrição: Desenvolva uma plataforma interativa de aprendizado online que ofereça conteúdo educacional em uma variedade de disciplinas. A plataforma deve permitir que os usuários naveguem por diferentes cursos, assistam a aulas em vídeo, realizem exercícios práticos e testes para avaliar seu conhecimento. Além disso, você pode adicionar recursos como fóruns de discussão para interação entre os usuários e um painel de controle para que os alunos acompanhem seu progresso.
